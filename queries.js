@@ -2,8 +2,7 @@ const express = require ('express')
 const app = express()
 
 app.get('/data', function(req,res){
-    res.send('Welcome ' + req.query.name + " You're " + req.query.age
-    + " And you're a " + req.query.gander)
+    res.send('Hey I am ' + req.query.name + ' I Love ' + req.query.like)
 })
 
 app.listen(8080)
