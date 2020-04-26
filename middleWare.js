@@ -6,7 +6,7 @@ console.log(req.ip)
 console.log(req.params)
 console.log(req.protocol)
 console.log(req.query)
-console.og(req.hostname)
+console.log(req.hostname)
 console.log(req.headers)
 
 next()
