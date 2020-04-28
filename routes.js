@@ -1,14 +1,25 @@
 const router = require('express').Router()
+const mongoose = require('mongoose')
 
-router.get('/books', function(req, res){
-    res.send('this is a new module')
+const userSchema = new mongoose.Schema({
+    username: {type: String},
+    phone: {type: Number},
+    email: {type: String},
 })
 
-router.post('/newBook', function(req, res){
-    res.json({
-        msg: 'you have added new book',
-        data: req.body,
-    })
+const userModel = mongoose.model('users', userSchema)
+
+router.post('/addUser', function(req, res){
+    const data = req.body
+    new userModel(data).save()
+
+    res.send('user added')
 })
 
+router.get('/getUsers', function(req, res){
+    const users = userModel.find().exec()
+
+    users.then((data) => res.json(data))
+    users.catch((error) => res.send(error))
+})
 module.exports = router
