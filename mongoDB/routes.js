@@ -22,4 +22,13 @@ router.get('/getUsers', function(req, res){
     users.then((data) => res.json(data))
     users.catch((error) => res.send(error))
 })
+
+router.get('/getUser/:id', function(req, res){
+    const id = req.params.id
+    const user = userModel.findById({_id: id}).exec()
+    user.then((data) => res.json(data))
+    user.catch((error) => res.json(error))
+
+})
+
 module.exports = router
